@@ -37,5 +37,14 @@ def feature_target_sample(housing_data_sample):
 
 def test_data_split(feature_target_sample):
     return_tuple = data_split(*feature_target_sample)
-    # TODO test if the length of return_tuple is 4
-    raise NotImplemented
+    assert len(return_tuple) == 4, "data_split() should return a tuple of length 4"
+
+    ###
+    # seperate the tuple
+    train_X, test_X, train_y, test_y = return_tuple
+
+    # asset data type
+    assert isinstance(train_X, pd.DataFrame), "train_X should be a DataFrame"
+    assert isinstance(test_X, pd.DataFrame), "test_X should be a DataFrame"
+    assert isinstance(train_y, pd.Series), "train_y should be a Series"
+    assert isinstance(test_y, pd.Series), "test_y should be a Series"
